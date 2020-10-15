@@ -20,7 +20,7 @@ def task_views(request):
 
 @api_view(['GET'])
 def task_list(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.all().order_by('-id')
     
     if tasks.count() == 0:
         data = {'mensagem':'Nenhuma task foi registrada.'}

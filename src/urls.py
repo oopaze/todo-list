@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from task import urls as task_urls
+from frontend import urls as frontend_urls
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/task/', include(task_urls), name='task')
+    path('api/task/', include("task.urls"), name='task'),
+    path('', include("frontend.urls")),
 ]
