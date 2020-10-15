@@ -81,14 +81,13 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     'default': config('DATABASE_URL',
         default = {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
             'NAME': os.environ.get('DB_NAME', 'todo-app'),
             'USER': os.environ.get('DB_USER', 'root'),
             'PASSWORD': os.environ.get('DB_PASSWD', '1234'),
             'HOST': os.environ.get('DB_HOST', 'localhost'),
             'PORT': os.environ.get('DB_PORT', '5432')
-        )
-    }
+        }
+    )
 }
 
 
