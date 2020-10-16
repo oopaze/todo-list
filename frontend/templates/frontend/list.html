@@ -87,9 +87,9 @@
 			<div id="form-wrapper">
 				<form id="form">
 					<div class="flex-wrapper">
-            <div style="flex: 6;">
+						<div style="flex: 6;">
 							<input id="tarefa" class="form-control" type="text" name="title" placeholder="Tarefa">
-              <textarea id="descricao" class="form-control" type="text" name="title" placeholder="Descrição"> </textarea>
+							<textarea id="descricao" class="form-control" type="text" name="title" placeholder="Descrição" value="Descrição"> </textarea>
 							<input style="float:right;" id="submit" class="btn" type="submit" value="Adicionar">
 						</div>
 					</div>
@@ -130,10 +130,10 @@
       document.getElementById('submit').value = 'Adicionar'
       var wrapper = document.getElementById('list-wrapper')
       wrapper.innerHTML = ''
+      var url = '{{uri}}api/task/list'
 
       fetch(url)
       .then((resp) => resp.json())
-      var url = '{{ uri }}api/task/list'
       .then(function(data){
         var list = data
         for (var i in list){
@@ -195,10 +195,10 @@
       e.preventDefault()
       console.log('Form Subimitted')
       
-      var url = '{{ uri }}api/task/create'
+      var url = '{{uri}}api/task/create'
       var method = 'POST'
       if (activeItem != null){
-        var url = '{{ uri }}api/task/update/' + activeItem.slug   
+        var url = '{{uri}}api/task/update/' + activeItem.slug   
         activeItem = null
         method = "PUT"
       }
@@ -234,7 +234,7 @@
     function deleteItem(item){
       slug = item.slug
       
-      fetch('{{ uri }}api/task/delete/' + slug, {
+      fetch('{{uri}}api/task/delete/' + slug, {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',
@@ -253,7 +253,7 @@
       } else {
         feito = 'true'
       }
-      fetch('{{ uri }}api/task/update/' + slug, {
+      fetch('{{uri}}api/task/update/' + slug, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
