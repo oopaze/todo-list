@@ -4,7 +4,7 @@ from django.utils.text import slugify
 class Task(models.Model):
     tarefa = models.CharField(max_length=200, unique=True, error_messages={"unique":"Tarefa já existente."})
     descricao = models.TextField(null=True, blank=True)
-    feito = models.BooleanField(default=False)
+    feito = models.IntegerField(default=0)
     slug = models.SlugField(max_length=200, unique=True)
 
     criado_em = models.DateField(auto_now_add=True)
